@@ -3,8 +3,8 @@
 
 # [Project Name] 🎯
 
-#Titile
-#Premium Tatkal Website 🎯
+
+Premium Tatkal Website 🎯
 
 ## Basic Details
 ### Team Name: [Name]
