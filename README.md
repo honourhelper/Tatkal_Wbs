@@ -24,9 +24,11 @@ Where is the joy of being redirected to “Oolampara” no matter what you choos
 Why are not more websites crashing trains at the end of a form submission?
 ### The Solution(that doesnt exist)
 
-Where is the thrill of typing your name three times?
-Where is the joy of being redirected to “Oolampara” no matter what you choose?
-Why are not more websites crashing trains at the end of a form submission?
+This project fixes nothing.
+It solves no real-world need.
+But it beautifully breaks everything we take for granted in good UI/UX.
+
+Because sometimes, what the world needs is a little chaos... and a spiderman background.
 
 For Software:
 - HTML5
