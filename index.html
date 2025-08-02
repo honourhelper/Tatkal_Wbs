@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Tatkal Website</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: monospace;
+    }
+
+    body {
+      background: radial-gradient(ellipse at center, #220000 0%, #000000 100%);
+      color: #ff4444;
+      overflow: hidden;
+    }
+
+    .main {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: bold;
+      animation: flicker 1.5s infinite;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #990000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .form-box {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 30px red;
+      color: white;
+    }
+
+    .form-box input {
+      margin: 10px;
+      padding: 10px;
+      width: 250px;
+      background: #111;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .floating-ad {
+      position: fixed;
+      width: 120px;
+      z-index: 999;
+    }
+
+    .ad1 { animation: moveDiag1 20s linear infinite; top: 10%; left: 0; }
+    .ad2 { animation: moveDiag2 25s linear infinite; top: 30%; left: 0; }
+
+    @keyframes moveDiag1 {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(90vw, 60vh); }
+      100% { transform: translate(0, 0); }
+    }
+
+    @keyframes moveDiag2 {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(80vw, 40vh); }
+      100% { transform: translate(0, 0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="main" id="main-content">
+    <div class="title">Premium Tatkal Website</div>
+    <button onclick="startBooking()">Book Now</button>
+  </div>
+
+  <script>
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function floatingAds() {
+      return `
+        <img class="floating-ad ad1" src="lol2.jpg" />
+        <img class="floating-ad ad2" src="Screenshot 2025-08-01 195512.png" />
+      `;
+    }
+
+    async function startBooking() {
+      document.getElementById("main-content").innerHTML = `
+        <div class="background" style="position: fixed; top:0; left:0; width:100%; height:100%; background: url('usl1.gif') center center / cover no-repeat; z-index:-1;"></div>
+        <div class="form-box" id="form-box">
+          <h2>Enter your name</h2>
+          <input type="text" id="name" placeholder="Your Name" />
+          <button onclick="goToLocation()">Next</button>
+        </div>
+        ${floatingAds()}
+      `;
+    }
+
+    let correctedName = false;
+    let correctedFrom = false;
+
+    async function goToLocation() {
+      const nameInput = document.getElementById("name");
+      if (!correctedName) {
+        nameInput.value = "Sivankutty Pillai";
+        correctedName = true;
+        return;
+      }
+
+      document.getElementById("form-box").innerHTML = '<div class="form-box"><h2>Loading... Going through name...</h2></div>';
+      await delay(4000);
+
+      document.getElementById("main-content").innerHTML = `
+        <div class="background" style="position: fixed; top:0; left:0; width:100%; height:100%; background: url('usl1.gif') center center / cover no-repeat; z-index:-1;"></div>
+        <div class="form-box" id="form-box">
+          <h2>From (Location)</h2>
+          <input type="text" id="from" placeholder="From" />
+          <input type="text" id="to" placeholder="To" />
+          <button onclick="smoothTravel()">Next</button>
+        </div>
+        ${floatingAds()}
+      `;
+    }
+
+    async function smoothTravel() {
+      const fromInput = document.getElementById("from");
+      if (!correctedFrom) {
+        fromInput.value = "Oolampara";
+        correctedFrom = true;
+        return;
+      }
+      document.getElementById("main-content").innerHTML = '<div class="form-box"><h2>Loading... Smooth travel guaranteed... 🚆</h2></div>';
+      await delay(4000);
+      finishBooking();
+    }
+
+    function finishBooking() {
+      document.body.innerHTML = `
+        <div class="background" style="background: url('usl2.gif') center center / cover no-repeat; position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1;"></div>
+        <div class="main">
+          <div class="form-box">
+            <h2 style="font-size: 2rem; color: yellow;">
+              Ahh, thank you for sharing this delightful info about your trip! 🚄<br>
+              I believe a fleet of trains is waiting just for you! 🛤️✨<br><br>
+              To begin again, kindly <a onclick="location.reload()" style="color: cyan; cursor:pointer; text-decoration: underline;">visit the original website</a>.
+            </h2>
+          </div>
+        </div>
+        ${floatingAds()}
+      `;
+    }
+  </script>
+</body>
+</html>
